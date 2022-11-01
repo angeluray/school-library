@@ -2,6 +2,7 @@ require './add'
 
 class Teacher < Person
   def initialization(specialization)
+    super(age, name, parent_permission: true)
     @specialization = specialization
   end
 
