@@ -1,6 +1,4 @@
-require_relative './add'
-
-class Nameable < Person
+class Nameable
   def correct_name
     raise NotImplementedError, 'Correctable'
   end
