@@ -1,13 +1,14 @@
 class Book
-  attr_accessor :title, :author, :book_rentals
+  attr_accessor :title, :author
+  attr_reader :rentals
 
   def initialize(title, author)
     @title = title
     @author = author
-    @book_rentals = []
+    @rentals = []
   end
 
-  def add_customer_rentals(date, customer)
+  def add_rentals(date, customer)
     Rental.new(date, self, customer)
   end
 end

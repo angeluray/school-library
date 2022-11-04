@@ -2,13 +2,14 @@ class Rental
   attr_accessor :date
   attr_reader :book, :customer
 
-  def initialize(date, book, customer)
+  def initialize(book, customer, date)
     @date = date
-
-    @book = book
-    @book.book_rentals.push(self)
-
     @customer = customer
-    @customer.rentals.push(self)
+    book.rentals.push(self)
+    customer.rentals.push(self)
+  end
+
+  def rentals
+    "#{@book.title}: #{@customer.name} #{@date}"
   end
 end
