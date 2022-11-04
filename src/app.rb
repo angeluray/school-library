@@ -13,7 +13,6 @@ class App
   def create_person
     puts 'Do you want to create a Student (1) or a Teacher (2) [Input the number]:'
     create_person_input = gets.chomp.to_i
-
     case create_person_input
     when 1
       create_student
@@ -41,8 +40,8 @@ class App
   def create_student
     puts 'Age:'
     student_age = gets.chomp.to_i
-    if student_age < 8 || student_age > 21
-      puts 'Invalid age, please insert an age between 8 and 21'
+    if student_age < 8 || student_age > 28 || student_age.nil?
+      puts 'Invalid age, please insert an age between 8 and 28'
       student_age = gets.chomp.to_i
     end
 
@@ -53,9 +52,9 @@ class App
     puts 'Do you have parent permission? [y/n]:'
     student_permission = gets.chomp
     if %w[n N].include?(student_permission)
-      false
+      student_permission = false
     elsif %w[y Y].include?(student_permission)
-      true
+      student_permission = true
     end
 
     student = Student.new(student_age, label, student_name, student_permission)
@@ -66,8 +65,8 @@ class App
   def create_teacher
     puts 'Age:'
     teacher_age = gets.chomp.to_i
-    if teacher_age < 21 || teacher_age > 60
-      puts 'Invalid age, please insert an age between 22 and 60'
+    if teacher_age < 28 || teacher_age > 60 || teacher_age.nil?
+      puts 'Invalid age, please insert an age between 28 and 60'
       teacher_age = gets.chomp.to_i
     end
 
@@ -85,7 +84,7 @@ class App
   def create_book
     puts 'Title:'
     book_title = gets.chomp.capitalize
-    puts 'Author'
+    puts 'Author:'
     book_author = gets.chomp.capitalize
     book = Book.new(book_title, book_author)
     @list_books.push(book)
@@ -93,14 +92,20 @@ class App
   end
 
   def list_book
+    puts "\n"
+    puts 'LISTED BOOKS|||||||||||||||||||||||||||||||'
     @list_books.each.with_index(1) do |book, index|
       puts "#{index}) Title:'#{book.title}', Author: #{book.author}"
     end
   end
 
   def list_people
-    @list_people.each.with_index(1) do |person, index|
-      puts "#{index}). [#{person.class}] Name: #{person.name}, Age: #{person.age}, ID: #{person.id}"
+    if @list_people.empty?
+      puts 'No person registered yet!'
+    else
+      @list_people.each.with_index do |person, index|
+        puts "(ID: #{index}-#{person.id}) [#{person.class}] NAME: #{person.name} AGE: #{person.age}"
+      end
     end
   end
 
@@ -110,38 +115,46 @@ class App
 
   def create_rental
     puts 'Select a book from the following list by number:'
-    list_book
-
+    puts "\n"
+    @list_books.each_with_index { |book, index| puts "(#{index}) => #{book.title} (#{book.author}) " }
     rental_book = gets.chomp.to_i
+    puts "\n"
 
     puts 'Select a person from the following list by number [Not id]:'
-
-    list_people
-
+    puts "\n"
+    @list_people.each_with_index { |people, index| puts "(#{index}) => #{people.name}" }
     rental_person = gets.chomp.to_i
-
-    # puts 'Date:'
-    # date = gets.chomp
 
     push_rentals(@rentals, Rental.new(@list_books[rental_book], @list_people[rental_person]))
     puts 'Rental created succesfully, well done!'
+    puts "\n"
+  end
+
+  def rentals_user(rentals, id)
+    if rentals.empty?
+      puts "No rental registed for #{id}!"
+    else
+      puts "\n"
+      puts 'Registered Rentals: '
+      rentals.each do |rental|
+        next if rental.customer != id
+
+        puts "DATE: #{rental.date}"
+        puts rental.rentals
+      end
+    end
   end
 
   def list_rentals
-    list_people
-    puts 'Please enter a person ID:'
-    person_id = gets.chomp.to_i
-
-    rental_perso = nil
-
-    @list_people.each do |item|
-      rental_perso = item if item.id == person_id
-    end
-
-    puts 'According to the user you selected, these are the rentals:'
-
-    rental_perso.rentals.each do |rental|
-      puts "Date #{rental.date}, Book '#{rental.book.title}', by #{rental.book.author}"
+    if @list_people.empty? || @rentals.empty?
+      puts 'NO RENTALS DATA'
+    else
+      puts "\n"
+      puts 'Please enter a person by first number of ID:'
+      @list_people.select.with_index { |person, index| puts "ID: #{index}-#{person.id} => #{person.name}" }
+      person_id = gets.chomp.to_i
+      rentals_user(@rentals, @list_people[person_id].name)
+      puts "\n"
     end
   end
 end

@@ -7,65 +7,52 @@ class Main
 
   def welcome
     puts 'Hi! Welcome to Angels School Library'
-    list_options
+    puts "====================================\n\n"
+    full_list
   end
 
   def full_list
+    puts "\n"
     puts 'Please choose an option by entering a number:'
     options = ['List all books', 'List all people', 'Create a person', 'Create a book', 'Create a rental',
-               'List all rentals for a given person id']
+               'List all rentals for a given person id', 'Exit']
     options.each.with_index(1) do |option, index|
       puts "#{index}. #{option}"
     end
+    puts "\n"
+    main_input = gets.chomp.to_i
+    listed_sections(main_input)
   end
 
-  def after_complete
-    full_list
-    after_input = gets.chomp.to_i
-    case after_input
-    when 1
-      @app.list_book
-      after_complete
-    when 2
-      @app.list_people
-      after_complete
-    when 3
-      @app.create_person
-      after_complete
-    when 4
-      @app.create_book
-      after_complete
-    when 5
-      @app.create_rental
-      after_complete
-    when 6
-      @app.list_rentals
-      after_complete
-    end
-  end
-
-  def list_options
-    full_list
-    user_input = gets.chomp.to_i
+  def listed_sections(user_input)
     case user_input
     when 1
       @app.list_book
-      after_complete
+      full_list
     when 2
       @app.list_people
-      after_complete
-    when 3
-      @app.create_person
-      after_complete
-    when 4
-      @app.create_book
-      after_complete
-    when 5
-      @app.create_rental
-      after_complete
+      full_list
     when 6
       @app.list_rentals
-      after_complete
+      full_list
+    when 7
+      puts 'Exiting program... We hope to see you soon!'
+    else
+      creators(user_input)
+    end
+  end
+
+  def creators(creator_input)
+    case creator_input
+    when 3
+      @app.create_person
+      full_list
+    when 4
+      @app.create_book
+      full_list
+    when 5
+      @app.create_rental
+      full_list
     end
   end
 end
