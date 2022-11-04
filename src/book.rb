@@ -9,6 +9,6 @@ class Book
   end
 
   def add_rentals(date, customer)
-    Rental.new(date, self, customer)
+    Rental.new(self, customer, date)
   end
 end
