@@ -1,0 +1,44 @@
+[
+  {
+    "id" : 741,
+    "type" : "Student",
+    "age" : 34,
+    "name" : "Agustin Bridgerton",
+    "parent_permission" : true
+  },
+  {
+    "id" : 476,
+    "type" : "Student",
+    "age" : 56,
+    "name" : "Mikey Lonely",
+    "parent_permission" : true
+  },
+  {
+    "id" : 430,
+    "type" : "Teacher",
+    "age" : 45,
+    "name" : "Lenny Campos",
+    "specialization" : "Arts"
+  },
+  {
+    "id" : 334,
+    "type" : "Teacher",
+    "age" : 56,
+    "name" : "Rose Mary",
+    "specialization" : "Science"
+  },
+  {
+    "id" : 579,
+    "type" : "Teacher",
+    "age" : 61,
+    "name" : "Louise",
+    "specialization" : "Maths"
+  },
+  {
+    "id" : 851,
+    "type" : "Student",
+    "age" : 15,
+    "name" : "Angel",
+    "parent_permission" : true
+  }
+]

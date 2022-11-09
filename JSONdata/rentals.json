@@ -1,0 +1,38 @@
+[
+  {
+    "date" : "2022-08-05",
+    "person_id" : 334,
+    "book_title" : "Harry Potter",
+    "person_name" : "Rose Mary"
+  },
+  {
+    "date" : "2013-03-05",
+    "person_id" : 741,
+    "book_title" : "Oh, not you again",
+    "person_name" : "Agustin Bridgerton"
+  },
+  {
+    "date" : "2013-06-14",
+    "person_id" : 741,
+    "book_title" : "Happier than ever, the book",
+    "person_name" : "Agustin Bridgerton"
+  },
+  {
+    "date" : "2020-22-15",
+    "person_id" : 851,
+    "book_title" : "Harry Potter",
+    "person_name" : "Angel"
+  },
+  {
+    "date" : "2020-12-08",
+    "person_id" : 851,
+    "book_title" : "Luckiest man alive",
+    "person_name" : "Angel"
+  },
+  {
+    "date" : "2022-11-09",
+    "person_id" : 579,
+    "book_title" : "Luckiest man alive",
+    "person_name" : "Louise"
+  }
+]
