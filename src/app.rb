@@ -4,12 +4,15 @@ require_relative './teacher'
 require_relative './rental'
 require_relative './modules/list'
 require_relative './modules/check'
+require_relative './JSON/main_preserve'
 
 class App
+  include MainPreserve
+
   def initialize
-    @list_people = []
-    @list_books = []
-    @rentals = []
+    @list_people = people_reader
+    @list_books = books_reader
+    @rentals = rentals_reader(@list_people, @list_books)
   end
 
   include ShowList
@@ -30,6 +33,7 @@ class App
   end
 
   def create_student
+    people_file = read_json('src/JSON/mypeople.json')
     puts 'Age:'
     student_age = gets.chomp.to_i
     age_stud_checker(student_age)
@@ -41,14 +45,24 @@ class App
 
     puts 'Do you have parent permission? [y/n]:'
     student_permission = gets.chomp
-    permission_checker(student_permission)
+    std_permi = permission_checker(student_permission)
 
-    student = Student.new(student_age, label, student_name, student_permission)
+    student = Student.new(student_age, label, student_name, std_permi)
     @list_people.push(student)
+    student = {
+      id: student.id,
+      classroom: student.class,
+      age: student.age,
+      name: student.name,
+      parent_permission: student.parent_permission
+    }
+    people_file.push(student)
+    write_json(people_file, 'src/JSON/mypeople.json')
     puts 'Person created successfully!'
   end
 
   def create_teacher
+    people_file = read_json('src/JSON/mypeople.json')
     puts 'Age:'
     teacher_age = gets.chomp.to_i
     age_checker(teacher_age)
@@ -62,16 +76,32 @@ class App
 
     teacher = Teacher.new(teacher_age, teacher_name, teacher_specialization)
     @list_people.push(teacher)
+    teacher = {
+      id: teacher.id,
+      classroom: teacher.class,
+      age: teacher.age,
+      name: teacher.name,
+      specialization: teacher.parent_permission
+    }
+    people_file.push(teacher)
+    write_json(people_file, 'src/JSON/mypeople.json')
     puts 'Person created succesfully!'
   end
 
   def create_book
+    book_storage = read_json('src/JSON/mybooks.json')
     puts 'Title:'
     book_title = gets.chomp.capitalize
     puts 'Author:'
     book_author = gets.chomp.capitalize
     book = Book.new(book_title, book_author)
     @list_books.push(book)
+    book_structure = {
+      title: book.title,
+      author: book.author,
+    }
+    book_storage.push(book_structure)
+    write_json(book_storage, 'src/JSON/mybooks.json')
     puts 'Book created succesfully, well done!'
   end
 
@@ -80,6 +110,7 @@ class App
   end
 
   def create_rental
+    storage = read_json('src/JSON/mybooks.json')
     puts 'Select a book from the following list by number:'
     puts "\n"
     @list_books.each_with_index { |book, index| puts "(#{index}) => #{book.title} (#{book.author}) " }
@@ -92,6 +123,15 @@ class App
     rental_person = gets.chomp.to_i
 
     push_rentals(@rentals, Rental.new(@list_books[rental_book], @list_people[rental_person]))
+    @rentals.map do |rental|
+      rental_structure = {
+        book_id: rental_book,
+        person_id: rental_person,
+        date: rental.date
+      }
+      storage.push(rental_structure)
+    end
+    write_json(storage, 'src/JSON/myrentals.json')
     puts 'Rental created succesfully, well done!'
     puts "\n"
   end
