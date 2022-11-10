@@ -7,6 +7,9 @@ class Main
   end
 
   def menu_options
+    sleep(1)
+    system('clear')
+    system('cls')
     puts 'Hi! Welcome to Angels School Library'
     puts "====================================\n\n"
     while @response != 7

@@ -36,7 +36,6 @@ Style/FrozenStringLiteralComment:
 Style/OptionalBooleanParameter:
   Enabled: false
 
-
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:

@@ -49,6 +49,13 @@ To get a local copy up and running follow these simple steps.
 - GitHub: [Neeraj](https://github.com/rebel216)
 - Twitter: [Neeraj](https://twitter.com/rebel216)
 - LinkedIn: [Neeraj](https://www.linkedin.com/in/neerajbhardwaj216/)
+
+👤 **Federico Luna**
+
+- GitHub: [@Flunavgt](https://github.com/Flunavgt)
+- Twitter: [@flunavgt](https://twitter.com/flunavgt)
+- LinkedIn: [federico-luna-Gt](https://linkedin.com/in/federico-luna-Gt)
+
 ## Show your support
 - Give a ⭐️ if you like this project!
 
