@@ -44,6 +44,11 @@ To get a local copy up and running follow these simple steps.
 - Twitter: [@atangeluray](https://twitter.com/atangeluray)
 - LinkedIn: [Angel Uray](www.linkedin.com/in/angeluray-jobs)
 
+👤 **Neeraj Bhardwaj**
+
+- GitHub: [Neeraj](https://github.com/rebel216)
+- Twitter: [Neeraj](https://twitter.com/rebel216)
+- LinkedIn: [Neeraj](https://www.linkedin.com/in/neerajbhardwaj216/)
 ## Show your support
 - Give a ⭐️ if you like this project!
 

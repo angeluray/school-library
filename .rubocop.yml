@@ -11,11 +11,13 @@ Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
   Max: 25
+
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
+
   IgnoredMethods: ["describe"]
   Max: 30
 
@@ -51,3 +53,6 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
+
