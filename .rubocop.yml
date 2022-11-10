@@ -10,15 +10,16 @@ AllCops:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 20
+  Max: 25
+
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  IgnoredMethods: ['describe']
-  Max: 30
 
+  IgnoredMethods: ["describe"]
+  Max: 30
 
 Style/Documentation:
   Enabled: false
@@ -34,6 +35,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 Style/OptionalBooleanParameter:
   Enabled: false
+
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
@@ -54,3 +56,4 @@ Style/HashTransformValues:
   Enabled: false
 Lint/UselessAssignment:
   Enabled: false
+
